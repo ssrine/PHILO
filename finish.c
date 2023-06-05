@@ -6,7 +6,7 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:22:22 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/06/05 09:46:05 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/06/05 12:06:28 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	philo_died(t_vars *vars, int *finished, int index)
 	*(vars->flag) = 1;
 	pthread_mutex_unlock(vars->general);
 	pthread_mutex_lock(vars->writing);
-	printf("%ld Philo %d has died\n", ft_timestamps()
+	printf("%ld Philo %d has died\n", ft_timestamps(0)
 		- vars->last_meal, index + 1);
 	pthread_mutex_unlock(vars->writing);
 	pthread_mutex_unlock(vars->eating);
@@ -42,7 +42,7 @@ void	check_helper(t_vars *vars, int *finished, t_args *args)
 int	check_philosopher(t_vars *philo, t_args *args, int index)
 {
 	pthread_mutex_lock(philo->eating);
-	if (ft_timestamps() - philo->last_meal > args->time_to_die)
+	if (ft_timestamps(0) - philo->last_meal > args->time_to_die)
 	{
 		philo_died(philo, &philo->fin, index);
 		return (-1);

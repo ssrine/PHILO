@@ -6,7 +6,7 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:31:49 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/06/05 10:08:11 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/06/05 12:01:29 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	creat_thread(t_args number, t_vars *help)
 	{
 		res = pthread_create(&help[i].philo_threads, NULL, routine, &help[i]);
 		if (res)
-			print_error(NULL);
+			print_error();
 		usleep(50);
 		i++;
 	}
@@ -35,13 +35,13 @@ int	parse_max_meals(int ac, char **av, t_args *number)
 		number->max_meals = ft_atoi(av[5]);
 		if (number->max_meals <= 0)
 		{
-			print_error(NULL);
+			print_error();
 			return (1);
 		}
 		number->all_ate = malloc(sizeof(int) * number->number_of_philos);
 		if (number->all_ate == NULL)
 		{
-			print_error(NULL);
+			print_error();
 			return (1);
 		}
 	}
@@ -71,7 +71,7 @@ int	main(int ac, char **av)
 
 	if (ac < 5 || ac > 6)
 	{
-		print_error(NULL);
+		print_error();
 		return (1);
 	}
 	if (parse_arguments(ac, av, &number) == 0)

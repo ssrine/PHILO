@@ -6,7 +6,7 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:31:58 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/06/05 10:28:20 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/06/05 12:06:01 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ typedef struct s_vars
 
 int		print_error(void);
 int		ft_atoi(char *str);
-long	ft_timestamps(void);
 void	print_message(char *str, int id, long time, t_vars *vars);
 void	*routine(void *arg);
 int		ft_usleep(int time);
@@ -72,5 +71,12 @@ void	allocation(t_args *number);
 void	init_philo(t_args *number, t_vars *help);
 int		parse_arguments(int ac, char **av, t_args *number);
 void	run_philosophers(t_args *number);
-
+int		sleep_think(t_vars *philo);
+void	take_left_fork(t_vars *philo);
+int		take_right_fork(t_vars *philo);
+void	release_forks(t_vars *philo);
+int		eat(t_vars *philo);
+long	ft_timestamps(long time);
+int		parse_max_meals(int ac, char **av, t_args *number);
+void	creat_thread(t_args number, t_vars *help);
 #endif
